@@ -286,7 +286,7 @@ type systemtimeW struct {
 
 func messageBox(title, text string, flags int) int {
 	ret, _, _ := messageBoxW.Call(0, uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(text))),
-		uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(title))), uintptr(uint(flags)))
+		uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(title))), uintptr(uint(0x1000|flags)))
 	return int(ret)
 }
 
