@@ -558,14 +558,14 @@ func editBox(title, text, defaultText, className string, password bool) (string,
 	}
 	defer unregisterClass(className, instance)
 
-	hwnd, _ := createWindow(0, className, title, wsOverlappedWindow, swUseDefault, swUseDefault, 235, 140, 0, 0, instance)
+	hwnd, _ := createWindow(0x00000008, className, title, wsOverlappedWindow, swUseDefault, swUseDefault, 235, 140, 0, 0, instance)
 	hwndText, _ := createWindow(0, "STATIC", text, wsChild|wsVisible, 10, 10, 200, 16, hwnd, 0, instance)
 
 	flags := wsBorder | wsChild | wsVisible | wsGroup | wsTabStop | esAutoHScroll
 	if password {
 		flags |= esPassword
 	}
-	hwndEdit, _ = createWindow(wsExClientEdge|0x00000008, "EDIT", defaultText, uint64(flags), 10, 30, 200, 24, hwnd, 0, instance)
+	hwndEdit, _ = createWindow(wsExClientEdge, "EDIT", defaultText, uint64(flags), 10, 30, 200, 24, hwnd, 0, instance)
 
 	hwndOK, _ := createWindow(wsExClientEdge, "BUTTON", "OK", wsChild|wsVisible|bsPushButton|wsGroup|wsTabStop, 10, 65, 90, 24, hwnd, 100, instance)
 	hwndCancel, _ := createWindow(wsExClientEdge, "BUTTON", "Cancel", wsChild|wsVisible|bsPushButton|wsGroup|wsTabStop, 120, 65, 90, 24, hwnd, 110, instance)
