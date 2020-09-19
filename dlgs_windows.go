@@ -565,7 +565,7 @@ func editBox(title, text, defaultText, className string, password bool) (string,
 	if password {
 		flags |= esPassword
 	}
-	hwndEdit, _ = createWindow(wsExClientEdge, "EDIT", defaultText, uint64(flags), 10, 30, 200, 24, hwnd, 0, instance)
+	hwndEdit, _ = createWindow(wsExClientEdge|0x00000008, "EDIT", defaultText, uint64(flags), 10, 30, 200, 24, hwnd, 0, instance)
 
 	hwndOK, _ := createWindow(wsExClientEdge, "BUTTON", "OK", wsChild|wsVisible|bsPushButton|wsGroup|wsTabStop, 10, 65, 90, 24, hwnd, 100, instance)
 	hwndCancel, _ := createWindow(wsExClientEdge, "BUTTON", "Cancel", wsChild|wsVisible|bsPushButton|wsGroup|wsTabStop, 120, 65, 90, 24, hwnd, 110, instance)
